@@ -1,0 +1,9 @@
+src/output/*.properties
+src/*env/
+src/logs/
+src/AppLogging/__pycache__
+src/FileHandler/__pycache__
+src/Pparser/__pycache__
+*.spec
+dist/
+build/
