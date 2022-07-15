@@ -42,7 +42,7 @@ jobs:
             }
       # Run PyInstaller
       - name: Run PyInstaller
-        run: pyinstaller src\app.py -n "Service Properties Parser" -i src\app.ico --add-data .\readme.md;. --add-data src\cur;.\cur --add-data src\new;.\new --add-data src\output;.\output --add-data src\logs;.\logs --add-data src\app.ico;.
+        run: pyinstaller src\app.py -n "Service Properties Parser" -i src\app.ico --add-data .\readme.md;. --add-data src\cur;.\cur --add-data src\new;.\new --add-data src\output;.\output --add-data src\app.ico;.
         shell: cmd
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
