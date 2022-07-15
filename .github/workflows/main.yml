@@ -28,10 +28,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-
-      # Confirm Python version
-      # Setup and activate venv
-      # Install requirements
       - name: Install requirements
         run: |
           python -m pip install --upgrade pip
@@ -40,12 +36,12 @@ jobs:
             {
               pip install -r requirements.txt
             }
-      # Run PyInstaller
       - name: Run PyInstaller
-        run: pyinstaller src\app.py -n "Service Properties Parser" -i src\app.ico --add-data .\readme.md;. --add-data src\cur;.\cur --add-data src\new;.\new --add-data src\output;.\output --add-data src\app.ico;.
-        shell: cmd
+        run: |
+          pyinstaller src\app.py -n "Service Properties Parser" -i src\app.ico --add-data .\readme.md;. --add-data src\cur;.\cur --add-data src\new;.\new --add-data src\output;.\output --add-data src\app.ico;.
+          compress-archive -path "dist\Service Properties Parser" "service_properties_parser.zip" -compressionlevel optimal
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: service-parser-windows
-          path: src/dist/windows
+          path: service_properties_parser.zip
