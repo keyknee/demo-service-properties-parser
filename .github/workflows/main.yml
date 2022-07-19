@@ -38,8 +38,8 @@ jobs:
             }
       - name: Run PyInstaller
         run: |
-          pyinstaller src\app.py -n "Service Properties Parser" -i src\app.ico --add-data ".\readme.md;." --add-data "src\cur;.\cur" --add-data "src\new;.\new" --add-data "src\output;.\output" --add-data "src\logs;.\logs" --add-data "src\app.ico;."
-          compress-archive -path "dist\Service Properties Parser" "service_properties_parser.zip" -compressionlevel optimal
+          pyinstaller $GITHUB_WORKSPACE\src\app.py -n "Service Properties Parser" -i $GITHUB_WORKSPACE\src\app.ico --add-data "$GITHUB_WORKSPACE\readme.md;." --add-data "$GITHUB_WORKSPACE\src\cur;.\cur" --add-data "$GITHUB_WORKSPACE\src\new;.\new" --add-data "$GITHUB_WORKSPACE\src\output;.\output" --add-data "$GITHUB_WORKSPACE\src\logs;.\logs" --add-data "$GITHUB_WORKSPACE\src\app.ico;."
+          compress-archive -path "$GITHUB_WORKSPACE\dist\Service Properties Parser" "service_properties_parser.zip" -compressionlevel optimal
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
