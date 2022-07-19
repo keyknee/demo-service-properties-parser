@@ -20,7 +20,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $env:GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       # Setup Py 3
@@ -38,8 +38,8 @@ jobs:
             }
       - name: Run PyInstaller
         run: |
-          pyinstaller $GITHUB_WORKSPACE\src\app.py -n "Service Properties Parser" -i $GITHUB_WORKSPACE\src\app.ico --add-data "$GITHUB_WORKSPACE\readme.md;." --add-data "$GITHUB_WORKSPACE\src\cur;.\cur" --add-data "$GITHUB_WORKSPACE\src\new;.\new" --add-data "$GITHUB_WORKSPACE\src\output;.\output" --add-data "$GITHUB_WORKSPACE\src\logs;.\logs" --add-data "$GITHUB_WORKSPACE\src\app.ico;."
-          compress-archive -path "$GITHUB_WORKSPACE\dist\Service Properties Parser" "service_properties_parser.zip" -compressionlevel optimal
+          pyinstaller $env:GITHUB_WORKSPACE\src\app.py -n "Service Properties Parser" -i $env:GITHUB_WORKSPACE\src\app.ico --add-data "$env:GITHUB_WORKSPACE\readme.md;." --add-data "$env:GITHUB_WORKSPACE\src\cur;.\cur" --add-data "$env:GITHUB_WORKSPACE\src\new;.\new" --add-data "$env:GITHUB_WORKSPACE\src\output;.\output" --add-data "$env:GITHUB_WORKSPACE\src\logs;.\logs" --add-data "$env:GITHUB_WORKSPACE\src\app.ico;."
+          compress-archive -path "$env:GITHUB_WORKSPACE\dist\Service Properties Parser" "service_properties_parser.zip" -compressionlevel optimal
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
